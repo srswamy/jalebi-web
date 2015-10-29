@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
-	resources :stores do
-		resources :menu_sections do
-			resources :menu_items
+	namespace :api, defaults: {format: 'json'} do
+		namespace :v1 do
+			resources :stores do
+				resources :menu_sections do
+					resources :menu_items
+				end
+			end
 		end
 	end
 
