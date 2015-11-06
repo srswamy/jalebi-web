@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 		end
 	end
 
-	resources :stores
+	resources :stores do
+		resources :menu_sections
+	end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

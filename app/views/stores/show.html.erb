@@ -3,4 +3,27 @@
 	<%= @store.name %>
 </p>
 
-<%= link_to 'Back', stores_path %>
+<%= link_to 'New menu section', new_store_menu_section_path(@store) %>
+
+
+<table>
+	<tr>
+		<th>Menu Sections</th>
+		<th colspan="3"></th>
+	</tr>
+	
+	<% @store.menu_sections.each do |menu_section| %>
+		<tr>
+			<td><%= menu_section.name %></td>
+			<td><%= link_to 'Show', store_menu_section_path(menu_section.store, menu_section) %></td>
+			<td><%= link_to 'Edit', edit_store_menu_section_path(menu_section.store, menu_section) %></td>
+			<td><%= link_to 'Delete', [menu_section.store, menu_section],
+					method: :delete,
+					data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+	<% end %>
+</table>
+
+<p>
+	<%= link_to 'Back', stores_path %>
+</p>
