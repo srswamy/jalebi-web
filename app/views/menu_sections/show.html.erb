@@ -3,6 +3,33 @@
 	<%= @menu_section.name %>	
 </p>
 
+<%= link_to 'New menu item', new_store_menu_section_menu_item_path(@menu_section.store, @menu_section) %>
+
+<p>
+	<strong>Menu Items:</strong>
+</p>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Price</th>
+		<td colspan="2"></td>
+	</tr>
+
+	<% @menu_section.menu_items.each do |menu_item| %>
+		<tr>
+			<td><%= menu_item.name %></td>
+			<td><%= menu_item.description %></td>
+			<td>Rs. <%= menu_item.price %>/<%= menu_item.unit.name %></td>
+			<td><%= link_to 'Edit', edit_store_menu_section_menu_item_path(menu_item.menu_section.store, menu_item.menu_section, menu_item) %></td>
+			<td><%= link_to 'Delete', [menu_item.menu_section.store, menu_item.menu_section, menu_item],
+					method: :delete,
+					data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+	<% end %>
+</table>
+
 <p>
 	<%= link_to 'Back', store_path(@store) %>
 </p>
