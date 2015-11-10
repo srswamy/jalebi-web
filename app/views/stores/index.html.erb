@@ -1,0 +1,21 @@
+<h1>List of Stores</h1>
+
+<%= link_to 'New store', new_store_path %>
+
+<table>
+	<tr>
+		<th>Store</th>
+		<th colspan="3"></th>
+	</tr>
+
+	<% @stores.each do |store| %>
+		<tr>
+			<td><%= store.name %></td>
+			<td><%= link_to 'Show', store_path(store) %></td>
+			<td><%= link_to 'Edit', edit_store_path(store) %></td>
+			<td><%= link_to 'Delete', store_path(store),
+				method: :delete,
+				data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+	<% end %>
+</table>
